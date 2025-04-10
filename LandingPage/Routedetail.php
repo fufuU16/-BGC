@@ -42,7 +42,7 @@ $conn->close();
     <nav>
         <button id="navToggle" class="nav-toggle">☰</button>
         <div id="navMenu" class="nav-menu">
-            <a href="index.php.php">Home</a>
+            <a href="index.php">Home</a>
             <a href="Routes.php">Routes</a>
             <a href="AboutUs.php" class="active">About Us</a>
             <a href="ContactUs.php">Contact Us</a>
