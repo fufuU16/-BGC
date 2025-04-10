@@ -1,0 +1,237 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    position: relative;
+    background-image: url('../image/bgbg.jpg'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Ensures the background image follows the scroll */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed; /* Fixed to ensure it covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Gray tone overlay */
+    z-index: -1; /* Places the overlay behind the content */
+    pointer-events: none; /* Ensures the overlay doesn't interfere with content interaction */
+}
+
+header {
+    display: flex;
+    justify-content: flex-end; /* Aligns navigation to the right */
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    height: 80px;
+    position: relative;
+    z-index: 2; /* Ensures header is above the overlay */
+    background-color: transparent; /* Remove background */
+}
+
+.logo img {
+    width: 40px;
+    margin-left: 20px;
+}
+
+nav {
+    margin-right: 20px;
+    position: relative;
+}
+
+nav a {
+    color: #ffffff; /* Text color */
+    margin: 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.nav-menu {
+    display: none; /* Default state for mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: auto;
+    z-index: 3; /* Ensure dropdown is above the map */
+    text-align: right;
+    padding: 10px;
+    background-color: transparent; /* Remove background */
+}
+
+.nav-menu.open {
+    display: flex; /* Show menu when open class is applied */
+}
+
+button.nav-toggle {
+    display: none;
+}
+
+/* Mobile view: show the nav-toggle button */
+@media (max-width: 768px) {
+    button.nav-toggle {
+        display: block;
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 24px;
+        margin-right: 20px;
+    }
+
+    .nav-menu {
+        display: none; /* Default state for mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: auto; /* Adjust width to fit content */
+        max-width: 250px; /* Adjust max-width to fit longer text */
+        z-index: 3; /* Ensure dropdown is above the map */
+        text-align: right;
+        padding: 10px;
+        background-color: transparent; /* Remove background */
+    }
+    
+    nav a {
+        display: block;
+        color: #ffffff;
+        margin: 10px 0;
+        text-decoration: none;
+        font-weight: bold;
+        white-space: nowrap; /* Prevent text from wrapping to the next line */
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-menu {
+        display: flex; /* Ensure menu is visible in full screen */
+        flex-direction: row; /* Adjust layout for full screen */
+        position: static; /* Reset position for full screen */
+        background-color: transparent; /* Remove background for full screen */
+        width: auto; /* Reset width for full screen */
+        padding: 0; /* Reset padding for full screen */
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.route-image {
+    display: flex;
+    justify-content: center; /* Center image horizontally */
+    align-items: center; /* Center image vertically */
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.route-image img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+#map {
+    width: 100%;
+    height: 500px;
+    z-index: 1; /* Ensure map is behind the dropdown */
+    position: relative;
+}
+
+.bus-stop-details {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    justify-items: center;
+    margin-top: 40px; /* Add space between the map and bus stop details */
+}
+
+.bus-stop-card {
+    background-color: #A0D9D9;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: left;
+}
+
+.bus-stop-card h2 {
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #2A9D8F;
+    width: 100%;
+}
+
+.bus-stop-card p {
+    color: #333333;
+    margin-bottom: 5px;
+    width: 100%;
+}
+
+footer {
+    padding: 10px;
+    background-color: rgba(42, 157, 143, 0.8);
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+    position: relative;
+    z-index: 1; /* Ensures footer is above the blurred background */
+}
+
+nav a.active {
+    text-decoration: underline;
+    font-weight: bold; /* Optional: to make the active link stand out more */
+    color: #ffffff; /* Optional: change the color of the active link */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .bus-stop-details {
+        grid-template-columns: 1fr; /* Stack items vertically on smaller screens */
+    }
+
+    .bus-stop-card {
+        max-width: 90%; /* Adjust width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .bus-stop-card {
+        max-width: 95%; /* Further adjust width for very small screens */
+    }
+}

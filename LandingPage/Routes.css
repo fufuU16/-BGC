@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    position: relative;
+    background-image: url('../image/bgbg.jpg'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Ensures the background image follows the scroll */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed; /* Fixed to ensure it covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Gray tone overlay */
+    z-index: -1; /* Places the overlay behind the content */
+    pointer-events: none; /* Ensures the overlay doesn't interfere with content interaction */
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    height: 80px;
+    position: relative;
+    z-index: 1; /* Ensures header is above the overlay */
+}
+
+.logo img {
+    width: 40px;
+    margin-left: 20px;
+}
+
+nav {
+    margin-right: 20px;
+    position: relative;
+}
+
+nav a {
+    color: #ffffff; /* Text color */
+    margin: 0 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nav-menu {
+    display: none; /* Default state for mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: auto;
+    z-index: 1;
+    text-align: right;
+    padding: 10px;
+}
+
+.nav-menu.open {
+    display: flex; /* Show menu when open class is applied */
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; /* Default state for mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        width: auto; /* Adjust width to fit content */
+        max-width: 250px; /* Adjust max-width to fit longer text */
+        z-index: 1;
+        text-align: right;
+        padding: 10px;
+    }
+    
+    nav a {
+        display: block;
+        color: #ffffff;
+        margin: 10px 0;
+        text-decoration: none;
+        font-weight: bold;
+        white-space: nowrap; /* Prevent text from wrapping to the next line */
+    }
+}
+
+h1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1; /* Ensures h1 is above the overlay */
+}
+
+/* Card styling */
+.card {
+    margin-top: 20px;
+    width: 380px;
+    height: 380px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1; /* Ensures card is above the overlay */
+}
+
+.card img {
+    width: 100%;
+    border-radius: 10px; /* Matches the border-radius of .route-image img */
+    object-fit: cover; /* Ensures the image covers the container */
+    object-position: center; /* Centers the image within the container */
+}
+
+/* Route details card styling */
+.route-details-card {
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 300px;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #A0D9D9;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers content horizontally */
+    justify-content: center; /* Centers content vertically */
+    text-align: center; /* Centers text within the card */
+    position: relative;
+    z-index: 1; /* Ensures route-details-card is above the overlay */
+}
+
+.route-details-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #333333;
+}
+
+.route-info {
+    display: grid;
+    grid-template-columns: auto auto; /* Maintain two columns */
+    gap: 10px;
+    width: 100%;
+    justify-items: start; /* Align items to the start (left) */
+}
+
+.route-codes, .bus-stops {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Align items to the start (left) */
+}
+
+.code-box {
+    width: 50px;
+    height: 30px;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.bus-stops span {
+    font-size: 15px;
+    font-weight: 700;
+    color: #333333;
+    height: 30px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+/* Layout for the routes */
+.routes-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.top-routes {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 40px;
+}
+
+.bottom-routes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    justify-items: center;
+}
+
+.route {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 380px;
+}
+
+/* Specific colors for each route code */
+.code-box.central {
+    background-color: #2A9D8F; /* Central Terminal color */
+}
+
+.code-box.east {
+    background-color: #E76F51; /* East Route color */
+}
+
+.code-box.weekend {
+    background-color: #F4A261; /* Weekend Route color */
+}
+
+.code-box.north {
+    background-color: #264653; /* North Route color */
+}
+
+/* Add more styles for other routes as needed *//* Existing styles... */
+
+.code-box.west {
+    background-color: #8E44AD; /* West Route color */
+}
+
+.code-box.arca {
+    background-color: #3498DB; /* ARCA South Route color */
+}
+
+/* Add more styles for other routes as needed */
+.route {
+    text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Inherit text color from parent */
+    display: block; /* Make the entire card clickable */
+}
+
+.route-details-card, .card {
+    color: #333333; /* Ensure text color is set */
+}
+
+nav a.active {
+    text-decoration: underline;
+    font-weight: bold; /* Optional: to make the active link stand out more */
+    color: #ffffff; /* Optional: change the color of the active link */
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .top-routes, .bottom-routes {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .route-details-card {
+        max-width: 90%; /* Adjust width for smaller screens */
+    }
+
+    .card {
+        max-width: 90%; /* Adjust width for smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .route-details-card {
+        max-width: 95%; /* Further adjust width for very small screens */
+    }
+
+    .card {
+        max-width: 95%; /* Further adjust width for very small screens */
+    }
+}
+
+button.nav-toggle {
+    display: none;
+}
+
+/* Mobile view: show the nav-toggle button */
+@media (max-width: 768px) {
+    button.nav-toggle {
+        display: block;
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 24px;
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-menu {
+        display: flex; /* Ensure menu is visible in full screen */
+        flex-direction: row; /* Adjust layout for full screen */
+        position: static; /* Reset position for full screen */
+        background-color: transparent; /* Remove background for full screen */
+        width: auto; /* Reset width for full screen */
+        padding: 0; /* Reset padding for full screen */
+    }
+}

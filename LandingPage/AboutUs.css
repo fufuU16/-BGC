@@ -1,0 +1,210 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    position: relative;
+    background-image: url('../image/bgbg.jpg'); /* Path to your background image */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Ensures the background image follows the scroll */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+body::before {
+    content: '';
+    position: fixed; /* Fixed to ensure it covers the entire viewport */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Gray tone overlay */
+    z-index: -1; /* Places the overlay behind the content */
+    pointer-events: none; /* Ensures the overlay doesn't interfere with content interaction */
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+    width: 100%;
+    height: 80px;
+    position: relative;
+    z-index: 1; /* Ensures header is above the overlay */
+}
+
+.logo img {
+    width: 40px;
+    margin-left: 20px;
+}
+
+nav {
+    margin-right: 20px;
+    position: relative;
+}
+
+nav a {
+    color: #ffffff; /* Text color */
+    margin: 0 30px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.nav-menu {
+    display: none; /* Default state for mobile */
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    width: auto;
+    z-index: 1;
+    text-align: right;
+    padding: 10px;
+}
+
+.nav-menu.open {
+    display: flex; /* Show menu when open class is applied */
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        display: none; /* Default state for mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0.8);
+        width: auto; /* Adjust width to fit content */
+        max-width: 250px; /* Adjust max-width to fit longer text */
+        z-index: 1;
+        text-align: right;
+        padding: 10px;
+    }
+    
+    nav a {
+        display: block;
+        color: #ffffff;
+        margin: 10px 0;
+        text-decoration: none;
+        font-weight: bold;
+        white-space: nowrap; /* Prevent text from wrapping to the next line */
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 700;
+    color: #ffffff; /* Text color */
+}
+
+.about-content {
+    background-color: #A0D9D9; /* Cards color */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.about-content h2 {
+    margin-top: 20px;
+    font-weight: 700;
+    color: #2A9D8F; /* Nav color for headings */
+}
+
+.about-content p {
+    margin-top: 10px;
+    line-height: 1.6;
+    color: #333333; /* Text color */
+}
+
+.about-content ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.about-content li {
+    margin-bottom: 10px;
+    color: #333333; /* Text color */
+}
+
+footer {
+    padding: 10px;
+    background-color: #2A9D8F; /* Nav color */
+    width: 100%;
+    text-align: center;
+    color: #ffffff;
+}
+
+button {
+    background-color: #F28C28; /* Buttons color */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #e07b20; /* Slightly darker shade for hover effect */
+}
+
+nav a.active {
+    text-decoration: underline;
+    font-weight: bold; /* Optional: to make the active link stand out more */
+    color: #ffffff; /* Optional: change the color of the active link */
+}
+
+/* Default state: hide the nav-toggle button */
+button.nav-toggle {
+    display: none;
+}
+
+/* Mobile view: show the nav-toggle button */
+@media (max-width: 768px) {
+    button.nav-toggle {
+        display: block;
+        background-color: transparent;
+        border: none;
+        color: #ffffff;
+        cursor: pointer;
+        font-size: 24px;
+        margin-right: 20px;
+    }
+}
+
+@media (min-width: 769px) {
+    .nav-menu {
+        display: flex; /* Ensure menu is visible in full screen */
+        flex-direction: row; /* Adjust layout for full screen */
+        position: static; /* Reset position for full screen */
+        background-color: transparent; /* Remove background for full screen */
+        width: auto; /* Reset width for full screen */
+        padding: 0; /* Reset padding for full screen */
+    }
+}
