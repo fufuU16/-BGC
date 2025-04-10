@@ -180,6 +180,7 @@ $conn->close();
         <label for="password">Password</label>
         <div class="password-container">
             <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            <button type="button" class="toggle-password" onclick="togglePassword()">Show</button>
 
         </div>
         <div class="forgot-password">
